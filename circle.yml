@@ -37,8 +37,12 @@ dependencies:
     - docker images
 
 deployment:
+
+  environment:
+    VCS_REF: $(echo $CIRCLE_SHA1 | cut -c -7)
+  
   prod:
     branch: master
     commands:
-      - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet:$CIRCLE_SHA1
+      - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet:$VCS_REF
       - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet:latest
