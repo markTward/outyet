@@ -1,0 +1,5 @@
+dependencies:
+  pre:
+    which gcloud
+	which kubectl
+	go version
