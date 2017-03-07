@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: 2017-03-07T01:23:40Z
+  name: outyet-sa
+  namespace: oy
+imagePullSecrets:
+- name: gcr-json-key
