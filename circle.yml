@@ -13,4 +13,4 @@ dependencies:
     - which docker || true
     - docker version || true
     - go version || true
-	- echo $GCLOUD_SERVICE_KEY || true
+    - echo $GCLOUD_SERVICE_KEY || true
