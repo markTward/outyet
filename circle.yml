@@ -40,4 +40,4 @@ deployment:
   prod:
     branch: master
     commands:
-      - sudo /opt/google-cloud-sdk/bin/gcloud docker push gcr.io/${PROJECT_NAME}/outyet
+      - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet
