@@ -4,6 +4,7 @@ machine:
     PROJECT_NAME: k8sdemo-159622
     CLUSTER_NAME: k0
     CLOUDSDK_COMPUTE_ZONE: us-west1-a
+    VCS_REF: $(echo $CIRCLE_SHA1 | cut -c -7)
 
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
@@ -37,9 +38,6 @@ dependencies:
     - docker images
 
 deployment:
-
-  environment:
-    VCS_REF: $(echo $CIRCLE_SHA1 | cut -c -7)
   
   prod:
     branch: master
