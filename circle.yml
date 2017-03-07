@@ -33,11 +33,12 @@ dependencies:
     - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
     #- sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
     - docker build -t gcr.io/${PROJECT_NAME}/outyet:$CIRCLE_SHA1 .
+    - docker tag gcr.io/${PROJECT_NAME}/outyet:$CIRCLE_SHA1 gcr.io/${PROJECT_NAME}/outyet:latest
     - docker images
-    #- docker tag us.gcr.io/${PROJECT_NAME}/hello:$CIRCLE_SHA1 us.gcr.io/${PROJECT_NAME}/hello:latest
 
 deployment:
   prod:
     branch: master
     commands:
       - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet
+      - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_NAME}/outyet:$CIRCLE_SHA1
