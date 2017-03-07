@@ -7,9 +7,10 @@ machine:
 
 dependencies:
   pre:
-    - which gcloud
-    - which kubectl
-    - which go
-    - which docker
-    - docker version
-    - go version
+    - which gcloud || true
+    - which kubectl || true
+    - which go || true
+    - which docker || true
+    - docker version || true
+    - go version || true
+	- echo $GCLOUD_SERVICE_KEY || true
